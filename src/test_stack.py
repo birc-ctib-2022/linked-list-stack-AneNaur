@@ -9,23 +9,23 @@ def test_me() -> None:
     assert 2 + 2 == 4
 
 def test_push() -> None:
-    is_stack = Stack()
-    is_stack.push(1)
-    assert is_stack.is_empty() == False
+    stack1 = Stack()
+    stack1.push(1)
+    assert stack1.is_empty() == False
 
 def test_top() -> None:
-    is_stack = Stack()
-    is_stack.push(1)
-    assert is_stack.top()==1
+    stack2 = Stack()
+    stack2.push(1)
+    assert stack2.top()==1
 
 def test_pop() -> None:
-    is_stack = Stack()
-    is_stack.push(1)
-    is_stack.pop()
-    assert is_stack.is_empty()==True
+    stack3 = Stack()
+    stack3.push(1)
+    stack3.pop()
+    assert stack3.is_empty()==True
 
 def test_exception() -> None:
-    is_stack = Stack()
+    stack4 = Stack()
     with pytest.raises(EmptyStack):
-        is_stack.pop()
-        is_stack.top()
+        stack4.pop()
+        stack4.top()
