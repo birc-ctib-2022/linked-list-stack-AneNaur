@@ -26,33 +26,39 @@ class Stack(Generic[T]):
     def __init__(self) -> None:
         """Create a new stack of values of type T."""
         # FIXME: code here
-        self.stack = []
+        self.stack = None
 
     def push(self, x: T) -> None:
         """Push x on the top of this stack."""
         # FIXME: code here
-        self.stack.append(x)
+        self.stack = Link(x, self.stack)
 
     def top(self) -> T:
         """Return the top of the stack."""
         # FIXME: code here
-        try:
-            return self.stack.get_last()
-        except IndexError:
+        if self.stack is None:
             raise EmptyStack()
+        return self.stack.head
 
     def pop(self) -> T:
         """Pop the top element off the stack and return it."""
         # FIXME: code here
-        try:
-            x = self.stack.get_last()
-            self.stack.remove_last()
-            return x
-        except IndexError
+        if self.stack is None:
             raise EmptyStack()
+        x = self.stack.head
+        self.stack = self.stack.tail
+        return x
 
     def is_empty(self) -> bool:
         """Test if the stack is empty."""
         # FIXME: code here
-        return len(self.stack)==0
+        return self.stack == None
 
+stack1 = Stack()
+print(stack1.is_empty())
+stack1.push(1)
+stack1.push(2)
+print(stack1.top())
+print(stack1.pop())
+print(stack1.is_empty())
+print(stack1.top())
